@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="265.0" prefWidth="449.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.LogInView">
+   <children>
+      <Button fx:id="BSingin" layoutX="194.0" layoutY="216.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" text="SingIn" />
+      <Label layoutX="14.0" layoutY="36.0" text="Login" />
+      <Label layoutX="14.0" layoutY="114.0" text="Password" />
+      <TextField fx:id="TFlogin" layoutX="14.0" layoutY="69.0" promptText="Cat2000" />
+      <TextField fx:id="TFpass" layoutX="14.0" layoutY="144.0" promptText="qwerty_0" />
+      <Button fx:id="BLogin" layoutX="33.0" layoutY="216.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" text="Login" />
+      <Text fx:id="TOut" layoutX="240.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="132.6708984375" />
+   </children>
+</AnchorPane>
