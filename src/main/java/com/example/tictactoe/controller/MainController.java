@@ -1,24 +1,19 @@
 package com.example.tictactoe.controller;
 
+import com.example.tictactoe.some.Krestik;
+import com.example.tictactoe.some.Nolik;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import org.kordamp.bootstrapfx.scene.layout.Panel;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class MainController  {
 
@@ -43,13 +38,21 @@ public class MainController  {
         GameField.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                GameField.getChildren().add(new Circle(event.getX(),event.getY(),5,Color.RED));
+                if(event.getButton().equals(MouseButton.PRIMARY)) {
+                    GameField.getChildren().add(Nolik.getNew(event.getX(), event.getY(), 60
+                    ));
+                }
+                if(event.getButton().equals(MouseButton.SECONDARY))  {
+                    GameField.getChildren().add(Krestik.getNew(event.getX(), event.getY(), 60));
+                }
+                //GameField.getChildren().add(new Circle(event.getX(),event.getY(),5,Color.RED));
             }
         });
 
     }
     @FXML
     public void onclk(ActionEvent actionEvent) {
+        GameField.getChildren().clear();
         drawGF();
     }
 
