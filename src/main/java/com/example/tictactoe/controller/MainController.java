@@ -45,44 +45,17 @@ public class MainController  {
         game = new Game();
         game.newGame(GameField);
 
-        ancor.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                t1.setText("X = "+ String.valueOf(event.getX()) +"; Y =  " + event.getY() );
-                t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
-                t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
-            }
+        ancor.setOnMouseMoved(event -> {
+            t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
+            t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
+            t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
         });
-        GameField.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                t1.setText("X = "+ String.valueOf(event.getX()) +"; Y =  " + event.getY() );
-                t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
-                t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        game.onClick(event.getX(), event.getY());
-                    }
-                });
-
-                //GameField.getChildren().add(new Circle(event.getX(),event.getY(),5,Color.RED));
-            }
+        GameField.setOnMouseClicked(event -> {
+            t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
+            t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
+            t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
+            game.onClick(event.getX(), event.getY());
         });
-
-        //        GameField.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                if(event.getButton().equals(MouseButton.PRIMARY)) {
-//                    GameField.getChildren().add(Nolik.getNew(event.getX(), event.getY(), 60
-//                    ));
-//                }
-//                if(event.getButton().equals(MouseButton.SECONDARY))  {
-//                    GameField.getChildren().add(Krestik.getNew(event.getX(), event.getY(), 60));
-//                }
-//                //GameField.getChildren().add(new Circle(event.getX(),event.getY(),5,Color.RED));
-//            }
-//        });
 
     }
     @FXML
@@ -90,9 +63,5 @@ public class MainController  {
         GameField.getChildren().clear();
         game.newGame(GameField);
     }
-
-
-
-
 
 }

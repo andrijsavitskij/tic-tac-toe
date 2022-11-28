@@ -6,5 +6,5 @@ public interface Figura {
 
     Group getNew(double X, double Y, double L);
 
-    public Group getGroup();
+    Group getGroup();
 }

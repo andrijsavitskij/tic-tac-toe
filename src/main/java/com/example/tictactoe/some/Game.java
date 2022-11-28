@@ -30,7 +30,6 @@ public class Game {
             x = 0;
             y+=height;
         }
-        //flushTitles();
 
         move = false;
     }
