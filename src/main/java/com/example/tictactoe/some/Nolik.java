@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class Nolik{
+public class Nolik implements Figura{
     private Circle big;
     private Circle smol;
     private Group group;
@@ -16,9 +16,11 @@ public class Nolik{
         smol = new Circle(X,Y,R-((R/100)*90),secondColor);
         group = new Group(big,smol);
     }
-    public static Group getNew(double X, double Y, double R){
+    @Override
+    public Group getNew(double X, double Y, double R){
         return new Group(new Circle(X,Y,R,Color.BLACK),new Circle(X,Y,R-((R/100)*10),Color.WHITE));
     }
+    @Override
     public Group getGroup(){
         return group;
     }

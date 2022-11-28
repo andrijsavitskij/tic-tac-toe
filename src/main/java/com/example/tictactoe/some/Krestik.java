@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class Krestik {
+public class Krestik implements Figura {
     private Line right;
     private Line left;
     private Group group;
@@ -17,13 +17,15 @@ public class Krestik {
         group = new Group(right, left);
     }
 
-    public static Group getNew(double X, double Y, double L) {
+    @Override
+    public Group getNew(double X, double Y, double L) {
         return new Group(
                 new Line(X-(L/2), Y+(L/2), X+(L/2),Y-(L/2)),
                 new Line(X+(L/2), Y+(L/2), X-(L/2),Y-(L/2))
         );
     }
 
+    @Override
     public Group getGroup() {
         return group;
     }

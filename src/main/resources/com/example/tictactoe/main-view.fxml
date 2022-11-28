@@ -16,7 +16,7 @@
             <HBox fx:id="DownFieldHBox" prefHeight="100.0" prefWidth="200.0" />
          </children>
       </VBox>
-      <Button fx:id="bbb" layoutX="300.0" layoutY="65.0" mnemonicParsing="false" onAction="#onclk" text="Button" />
+      <Button fx:id="bbb" layoutX="300.0" layoutY="65.0" mnemonicParsing="false" onAction="#onClk" text="Button" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
