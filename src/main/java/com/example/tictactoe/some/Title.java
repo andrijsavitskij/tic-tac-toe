@@ -14,6 +14,15 @@ public class Title {
 
     }
 
+    public double getCenterX(){
+        return endX -(endX-startX)/2;
+    }
+
+    public double getCenterY(){
+        return endY -(endY-startY)/2;
+    }
+
+
     public boolean isIn(double X, double Y){
         return X > startX && X < endX & Y > startY && Y < endY;
     }
@@ -24,6 +33,17 @@ public class Title {
 
     public void setFigura(Figura figura){
         this.figura = figura;
+    }
+
+    public void setFigura(Class figuraClass){
+
+        if (Nolik.class.equals(figuraClass)){
+            figura = new Nolik(getCenterX(),getCenterY(), 60);
+        }
+        else if (Krestik.class.equals(figuraClass)){
+            figura = new Krestik(getCenterX(),getCenterY(), 80);
+        }
+
     }
 
     public boolean isEmpty(){

@@ -27,6 +27,7 @@ public class Game {
                 titles[i][j] = new Title(x,y,x+width,y+height);
                 x+=width;
             }
+            x = 0;
             y+=height;
         }
         //flushTitles();
@@ -41,16 +42,19 @@ public class Game {
     }
 
     private void newMove(Title title){
-        if(move) title.setFigura(new Krestik(field.getWidth()/3/2,field.getHeight()/3/2,80)); //todo redo
-        else title.setFigura(new Nolik(field.getWidth()/3/2,field.getHeight()/3/2,60)); //todo redo
+        if(move) title.setFigura(Krestik.class);
+        else title.setFigura(Nolik.class);
         field.getChildren().add(title.getFigura().getGroup());
         move = !move;
     }
 
     public void onClick(Double X, Double Y){
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
-                if(titles[i][j].isEmpty() & titles[i][j].isIn(X,Y)) newMove(titles[i][j]);
+        l1:for (var i : titles){
+            for (var j : i){
+                if(j.isEmpty() & j.isIn(X,Y)) {
+                    newMove(j);
+                    break l1;
+                }
             }
         }
     }

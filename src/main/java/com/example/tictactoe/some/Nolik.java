@@ -18,7 +18,7 @@ public class Nolik implements Figura{
     }
     @Override
     public Group getNew(double X, double Y, double R){
-        return new Group(new Circle(X,Y,R,Color.BLACK),new Circle(X,Y,R-((R/100)*10),Color.WHITE));
+        return new Group(new Circle(X,Y,R,Color.BLACK),new Circle(X,Y,R-((R/100)*80),Color.WHITE));
     }
     @Override
     public Group getGroup(){
