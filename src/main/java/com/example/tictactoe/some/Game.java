@@ -86,8 +86,8 @@ public class Game {
     private int matrix(int id, int X, int Y){
         int xmax = 3, ymax = 3;
         int x = id%3, y = id/3;
-        x+= x+X > xmax? +(X-xmax) : X;
-        y+= y+Y > ymax? +(Y-ymax) : Y;
+        x+= x+X >= xmax? +(X-xmax) : X;
+        y+= y+Y >= ymax? +(Y-ymax) : Y;
         return x+y*3;
     }
     private void drawGF(){

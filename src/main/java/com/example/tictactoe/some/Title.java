@@ -1,14 +1,19 @@
 package com.example.tictactoe.some;
 
+import javafx.scene.shape.Rectangle;
+
 public class Title {
     private Figura figura = null;
     private final double startX,startY;
     private final double endX,endY;
+
+    private Rectangle rectangle;
     Title(double sX,double sY, double eX, double eY){
         startX = sX;
         startY = sY;
         endY = eY;
         endX = eX;
+        rectangle = new Rectangle();
     }
 
     public double getCenterX(){
@@ -47,6 +52,6 @@ public class Title {
     }
 
     public boolean equals(Title title){
-        return getFigura().equals(title.getFigura());
+        return getFigura().getClass().equals(title.getFigura().getClass());
     }
 }
