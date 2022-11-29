@@ -61,11 +61,18 @@ public class Game {
 
             int x = id % 3;
             if (v.equals(titles.get(matrix(id,1,0))) && v.equals(titles.get(matrix(id,2,0)))) {
-                winLine(id,0);//horizontal
+                winLine(id,0);// --
             }
-            //else if (v.equals(titles.get() && titles.get())) {
+            else if (v.equals(titles.get(matrix(id,0,1))) && v.equals(titles.get(matrix(id,0,2)))) {
+                winLine(id,1);// |
+            }
+            else if (v.equals(titles.get(matrix(id,1,1))) && v.equals(titles.get(matrix(id,2,2)))) {
+                winLine(id,2);// \
+            }
+            else if (v.equals(titles.get(matrix(id,-1,1))) && v.equals(titles.get(matrix(id,-2,1)))) {
+                winLine(id,3);// /
+            }
 
-            //}
         }
     }
 
@@ -75,10 +82,13 @@ public class Game {
                 newGame(field);
             }
             case 1->{
+                newGame(field);
             }
             case 2->{
+                newGame(field);
             }
             case 3->{
+                newGame(field);
             }
         }
     }
@@ -86,10 +96,17 @@ public class Game {
     private int matrix(int id, int X, int Y){
         int xmax = 3, ymax = 3;
         int x = id%3, y = id/3;
-        x+= x+X >= xmax? +(X-xmax) : X;
-        y+= y+Y >= ymax? +(Y-ymax) : Y;
+        if(X != 0 || Y != 0) {
+            x += x + X >= xmax ? +(X - xmax) : X;
+            y += y + Y >= ymax ? +(Y - ymax) : Y;
+        }
+        else {// TODO: 29.11.2022 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            x += x + X >= xmax ? +(X - xmax) : X;
+            y += y + Y >= ymax ? +(Y - ymax) : Y;
+        }
         return x+y*3;
     }
+
     private void drawGF(){
         var width = field.getWidth();
         var height = field.getHeight();

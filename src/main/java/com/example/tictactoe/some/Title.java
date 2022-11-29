@@ -52,6 +52,7 @@ public class Title {
     }
 
     public boolean equals(Title title){
+        if(isEmpty() || title.isEmpty()) return false;
         return getFigura().getClass().equals(title.getFigura().getClass());
     }
 }
