@@ -41,25 +41,20 @@ public class MainController  {
 
     @FXML
     public void initialize() {
-        game = new Game();
-        Platform.runLater(()->{game.newGame(GameField);});
+        game = new Game(GameField);
+        Platform.runLater(()-> game.newGame());
 
         ancor.setOnMouseMoved(event -> {
             t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
             t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
             t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
         });
-        GameField.setOnMouseClicked(event -> {
-            t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
-            t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
-            t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
-            game.onClick(event.getX(), event.getY());
-        });
+
 
     }
     @FXML
     public void onClk(ActionEvent actionEvent) {
-        game.newGame(GameField);
+        game.newGame();
     }
 
 }

@@ -5,15 +5,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class Krestik implements Figura {
-    private Line right;
-    private Line left;
-    private Group group;
-    private Color mainColor = Color.BLACK;
-    private Color secondColor = Color.WHITE;
+    private final Group group;
 
     public Krestik(double X, double Y, double L) {
-        right = new Line(X-(L/2), Y+(L/2), X+(L/2),Y-(L/2));
-        left = new Line(X+(L/2), Y+(L/2), X-(L/2),Y-(L/2));
+        Line right = new Line(X - (L / 2), Y + (L / 2), X + (L / 2), Y - (L / 2));
+        Line left = new Line(X + (L / 2), Y + (L / 2), X - (L / 2), Y - (L / 2));
+        left.setStrokeWidth(5);
+        right.setStrokeWidth(5);
         group = new Group(right, left);
     }
 
