@@ -19,15 +19,13 @@ public class Krestik implements Figura {
 
     @Override
     public Group getNew(double X, double Y, double L) {
-        return new Group(
-                new Line(X-(L/2), Y+(L/2), X+(L/2),Y-(L/2)),
-                new Line(X+(L/2), Y+(L/2), X-(L/2),Y-(L/2))
-        );
+        return new Krestik(X,Y,L).getGroup();
     }
 
     @Override
     public Group getGroup() {
         return group;
     }
+
 
 }

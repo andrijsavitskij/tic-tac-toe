@@ -37,13 +37,12 @@ public class MainController  {
     private Text t3;
     @FXML
     private AnchorPane ancor;
-
     private static Game game;
 
     @FXML
     public void initialize() {
         game = new Game();
-        game.newGame(GameField);
+        Platform.runLater(()->{game.newGame(GameField);});
 
         ancor.setOnMouseMoved(event -> {
             t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
@@ -60,7 +59,6 @@ public class MainController  {
     }
     @FXML
     public void onClk(ActionEvent actionEvent) {
-        GameField.getChildren().clear();
         game.newGame(GameField);
     }
 

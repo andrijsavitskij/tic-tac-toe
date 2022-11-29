@@ -13,15 +13,16 @@ public class Nolik implements Figura{
 
     public Nolik(double X, double Y, double R){
         big = new Circle(X,Y,R, mainColor);
-        smol = new Circle(X,Y,R-((R/100)*90),secondColor);
+        smol = new Circle(X,Y,R-((R/100)*10),secondColor);
         group = new Group(big,smol);
     }
     @Override
     public Group getNew(double X, double Y, double R){
-        return new Group(new Circle(X,Y,R,Color.BLACK),new Circle(X,Y,R-((R/100)*80),Color.WHITE));
+        return new Nolik(X,Y,R).getGroup();
     }
     @Override
     public Group getGroup(){
         return group;
     }
+
 }

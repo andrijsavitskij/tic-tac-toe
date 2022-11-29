@@ -10,9 +10,6 @@ public class Title {
         endY = eY;
         endX = eX;
     }
-    public void clear(){
-
-    }
 
     public double getCenterX(){
         return endX -(endX-startX)/2;
@@ -21,7 +18,6 @@ public class Title {
     public double getCenterY(){
         return endY -(endY-startY)/2;
     }
-
 
     public boolean isIn(double X, double Y){
         return X > startX && X < endX & Y > startY && Y < endY;
@@ -48,5 +44,9 @@ public class Title {
 
     public boolean isEmpty(){
         return figura == null;
+    }
+
+    public boolean equals(Title title){
+        return getFigura().equals(title.getFigura());
     }
 }
