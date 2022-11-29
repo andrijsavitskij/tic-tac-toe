@@ -70,7 +70,9 @@ public class Game {
                 winLine(id,2);// \
             }
             else if (v.equals(titles.get(matrix(id,-1,1))) && v.equals(titles.get(matrix(id,-2,1)))) {
-                winLine(id,3);// /
+                winLine(id,3);// / 
+                // FIXME: 29.11.2022 jyfuy
+                
             }
 
         }
@@ -100,7 +102,7 @@ public class Game {
             x += x + X >= xmax ? +(X - xmax) : X;
             y += y + Y >= ymax ? +(Y - ymax) : Y;
         }
-        else {// TODO: 29.11.2022 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        else {// FIXME: 29.11.2022 uhgiuihg
             x += x + X >= xmax ? +(X - xmax) : X;
             y += y + Y >= ymax ? +(Y - ymax) : Y;
         }
