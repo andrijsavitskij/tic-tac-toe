@@ -1,7 +1,7 @@
 package com.example.tictactoe.controller;
 
 import com.example.tictactoe.HelloApplication;
-import com.example.tictactoe.some.Game;
+import com.example.tictactoe.some.gameStaff.Game;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +42,9 @@ public class MainHBox {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    //// TODO: 30.11.2022 log in/out/singIn
+
+
 }

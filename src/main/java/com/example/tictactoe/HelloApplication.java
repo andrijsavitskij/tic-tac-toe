@@ -1,5 +1,7 @@
 package com.example.tictactoe;
 
+import com.example.tictactoe.some.gameStaff.Player;
+import com.example.tictactoe.some.gameStaff.Settings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Tic-Tac-Toe");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {

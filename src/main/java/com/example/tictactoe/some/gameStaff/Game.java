@@ -1,14 +1,13 @@
-package com.example.tictactoe.some;
+package com.example.tictactoe.some.gameStaff;
 
+import com.example.tictactoe.some.figurs.Krestik;
+import com.example.tictactoe.some.figurs.Nolik;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
-import java.lang.reflect.Field;
+
 import java.util.ArrayList;
 
 public class Game {

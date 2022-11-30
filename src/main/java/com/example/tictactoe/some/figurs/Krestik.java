@@ -1,4 +1,4 @@
-package com.example.tictactoe.some;
+package com.example.tictactoe.some.figurs;
 
 import javafx.scene.Group;
 import javafx.scene.shape.Line;

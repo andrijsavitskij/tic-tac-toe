@@ -1,10 +1,10 @@
-package com.example.tictactoe.some;
+package com.example.tictactoe.some.figurs;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class Nolik implements Figura{
+public class Nolik implements Figura {
     private Circle big;
     private Circle smol;
     private Group group;

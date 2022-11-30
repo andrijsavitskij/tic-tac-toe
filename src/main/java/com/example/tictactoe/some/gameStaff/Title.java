@@ -1,6 +1,8 @@
-package com.example.tictactoe.some;
+package com.example.tictactoe.some.gameStaff;
 
-import javafx.scene.shape.Rectangle;
+import com.example.tictactoe.some.figurs.Figura;
+import com.example.tictactoe.some.figurs.Krestik;
+import com.example.tictactoe.some.figurs.Nolik;
 
 public class Title {
     private Figura figura = null;
@@ -35,11 +37,12 @@ public class Title {
     }
 
     public void setFigura(Class figuraClass){
+        double L = Math.min(endX - startX, endY - startY)/2;
         if (Nolik.class.equals(figuraClass)){
-            figura = new Nolik(getCenterX(),getCenterY(), 60);
+            figura = new Nolik(getCenterX(),getCenterY(), (L/100)*70);
         }
         else if (Krestik.class.equals(figuraClass)){
-            figura = new Krestik(getCenterX(),getCenterY(), 80);
+            figura = new Krestik(getCenterX(),getCenterY(), L);
         }
     }
 
