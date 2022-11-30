@@ -7,13 +7,11 @@ public class Title {
     private final double startX,startY;
     private final double endX,endY;
 
-    private Rectangle rectangle;
     Title(double sX,double sY, double eX, double eY){
         startX = sX;
         startY = sY;
         endY = eY;
         endX = eX;
-        rectangle = new Rectangle();
     }
 
     public double getCenterX(){
@@ -54,5 +52,9 @@ public class Title {
     public boolean equals(Title title){
         if(isEmpty() || title.isEmpty()) return false;
         return getFigura().getClass().equals(title.getFigura().getClass());
+    }
+
+    public void clear(){
+        if(!isEmpty()) figura = null;
     }
 }

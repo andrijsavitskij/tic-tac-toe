@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.tictactoe.controller.MainHBox">
+   <VBox fx:id="LVBox" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+         AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   <VBox alignment="CENTER" layoutX="395.0" layoutY="115.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="395.0"
+         AnchorPane.rightAnchor="395.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="UpFieldHBox" prefHeight="100.0" prefWidth="200.0"/>
+      <Pane fx:id="GameField" layoutX="440.0" layoutY="135.0" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="500.0" prefWidth="500.0" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="440.0"
+            AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="135.0"/>
+      <HBox fx:id="DownFieldHBox" prefHeight="100.0" prefWidth="200.0"/>
+   </VBox>
+   <VBox fx:id="RVBox" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+</HBox>

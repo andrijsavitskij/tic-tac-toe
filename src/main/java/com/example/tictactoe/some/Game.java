@@ -11,22 +11,16 @@ import javafx.scene.shape.Line;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-
 public class Game {
     private final Pane field;
     private final ArrayList<Title> titles = new ArrayList<>(9);
     private static boolean move = false;
     public Game(Pane field){
         this.field = field;
-    }
-    public void newGame(){
-        field.getChildren().clear();// bad
-        drawGF();
 
         double width = field.getWidth()/3;
         double height = field.getHeight()/3;
         double x = 0, y = 0;
-
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 titles.add(new Title(x,y,x+width,y+height));
@@ -36,8 +30,13 @@ public class Game {
             y+=height;
         }
 
-        move = false;
+    }
+    public void newGame(){
+        field.getChildren().clear();// bad
+        for(var i : titles) i.clear();
 
+        move = false;
+        drawGF();
         field.setOnMouseClicked(event -> onClick(event.getX(), event.getY()));
     }
     
@@ -101,7 +100,7 @@ public class Game {
      */
     private void winLine(Title title, int ll){
         Line line;
-        int zero = 10;
+        int zero = 0;
         switch (ll){
             // --
             case 0-> line = new Line(zero,title.getCenterY(),field.getWidth(),title.getCenterY());

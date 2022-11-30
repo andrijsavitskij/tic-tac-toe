@@ -2,20 +2,14 @@ package com.example.tictactoe.controller;
 
 import com.example.tictactoe.some.Game;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 
-public class MainController  {
+public class MainHBox {
 
     @FXML
     private Pane GameField;
@@ -28,20 +22,22 @@ public class MainController  {
     @FXML
     private VBox RVBox;
     @FXML
-    private Button bbb;
-    @FXML
     private AnchorPane ancor;
     private static Game game;
 
     @FXML
     public void initialize() {
-        game = new Game(GameField);
-        Platform.runLater(()-> game.newGame());
+        Platform.runLater(()-> {
+            game = new Game(GameField);
+            game.newGame();
+        });
+
+//        try {
+//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+//            RVBox.getChildren().add(fxmlLoader.load());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
-    @FXML
-    public void onClk(ActionEvent actionEvent) {
-        game.newGame();
-    }
-
 }
