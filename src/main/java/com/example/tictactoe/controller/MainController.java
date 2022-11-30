@@ -30,12 +30,6 @@ public class MainController  {
     @FXML
     private Button bbb;
     @FXML
-    private Text t1;
-    @FXML
-    private Text t2;
-    @FXML
-    private Text t3;
-    @FXML
     private AnchorPane ancor;
     private static Game game;
 
@@ -43,13 +37,6 @@ public class MainController  {
     public void initialize() {
         game = new Game(GameField);
         Platform.runLater(()-> game.newGame());
-
-        ancor.setOnMouseMoved(event -> {
-            t1.setText("X = "+ event.getX() +"; Y =  " + event.getY() );
-            t2.setText("X = "+ event.getSceneX() +"; Y =  " + event.getSceneY() );
-            t3.setText("X = "+ event.getScreenX() +"; Y =  " + event.getScreenY() );
-        });
-
 
     }
     @FXML

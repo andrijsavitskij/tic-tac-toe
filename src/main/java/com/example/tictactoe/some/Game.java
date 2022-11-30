@@ -41,8 +41,7 @@ public class Game {
 
         field.setOnMouseClicked(event -> onClick(event.getX(), event.getY()));
     }
-
-
+    
     private void newMove(Title title){
         if(move) title.setFigura(Krestik.class);
         else title.setFigura(Nolik.class);
@@ -77,6 +76,8 @@ public class Game {
             else if ((id==2 || id == 4 || id== 6) && (titles.get(2).equals(titles.get(4)) && titles.get(2).equals(titles.get(6)))) {
                 winLine(id,3);// /
                 // FIX 29.11.2022
+            } else if (titles.stream().noneMatch(Title::isEmpty)) {
+                Platform.runLater(()-> field.setOnMouseClicked(event -> newGame()));
             }
         }
     }
