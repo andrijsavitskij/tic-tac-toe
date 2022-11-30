@@ -35,14 +35,12 @@ public class Title {
     }
 
     public void setFigura(Class figuraClass){
-
         if (Nolik.class.equals(figuraClass)){
             figura = new Nolik(getCenterX(),getCenterY(), 60);
         }
         else if (Krestik.class.equals(figuraClass)){
             figura = new Krestik(getCenterX(),getCenterY(), 80);
         }
-
     }
 
     public boolean isEmpty(){

@@ -1,12 +1,16 @@
 package com.example.tictactoe.controller;
 
+import com.example.tictactoe.HelloApplication;
 import com.example.tictactoe.some.Game;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 
 public class MainHBox {
@@ -32,12 +36,12 @@ public class MainHBox {
             game.newGame();
         });
 
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-//            RVBox.getChildren().add(fxmlLoader.load());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+            RVBox.getChildren().add(fxmlLoader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

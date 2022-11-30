@@ -25,6 +25,6 @@ public class LogInView {
     }
     @FXML
     private void OnBLogin(){
-        TError.setText("");
+        TError.setText("login");
     }
 }
