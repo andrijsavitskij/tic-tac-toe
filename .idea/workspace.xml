@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="v0.2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/Profile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/SingIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/LogSinInOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/profile-view.fxml" afterDir="false" />
+    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="v0.2.9">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/LogInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/LogIn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/gameStaff/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/gameStaff/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/gameStaff/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/gameStaff/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/gameStaff/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/singin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/singin-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainHBox-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainHBox-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +89,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.example.tictactoe.HelloApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -206,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669842101392</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="v0.2.9">
+      <created>1669906421759</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1669906421759</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,7 +228,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="v0.1" />
     <MESSAGE value="v0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.2" />
+    <MESSAGE value="v0.2.9" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.2.9" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -233,6 +237,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tic_Tac_Toe$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1669676186532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.tictactoe.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Tic_Tac_Toe$com_example_tictactoe_HelloApplication.ic" NAME="com.example.tictactoe.HelloApplication Coverage Results" MODIFIED="1669915890859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.tictactoe.controller.*</FILTER>
     </SUITE>
   </component>

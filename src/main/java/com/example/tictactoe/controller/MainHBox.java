@@ -27,18 +27,46 @@ public class MainHBox {
     @FXML
     private VBox RVBox;
     @FXML
-    private AnchorPane ancor;
+    private HBox mainHBox;
     private static Game game;
+
 
     @FXML
     public void initialize() {
         Platform.runLater(()-> {
+            resize();
             game = new Game(GameField);
             game.newGame();
         });
 
-        LogSinInOut.setPane(RVBox);
-        LogSinInOut.start();
+
+        //LogSinInOut.setPane(RVBox);
+        //LogSinInOut.start();
+
+        Platform.runLater(()-> {
+            mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
+                resize();
+            });
+
+            mainHBox.heightProperty().addListener((obs, oldVal, newVal) -> {
+                resize();
+            });
+        });
+
+
+    }
+
+    private void resize(){
+        double hw = mainHBox.getWidth()/2;
+        double hh = mainHBox.getHeight()/2;
+        final double CORR = 20;
+        RVBox.setPrefWidth(hw/2);
+        LVBox.setPrefWidth(hw/2);
+        UpFieldHBox.setPrefHeight(hh/2);
+        DownFieldHBox.setPrefHeight(hh/2);
+        GameField.setPrefWidth(hw-CORR);
+        GameField.setPrefHeight(hh - CORR);
+
     }
 
 }
