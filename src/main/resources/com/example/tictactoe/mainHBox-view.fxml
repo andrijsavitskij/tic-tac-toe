@@ -4,7 +4,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:id="mainHBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.MainHBox">
+<HBox fx:id="mainHBox" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.MainHBox">
    <children>
       <VBox fx:id="LVBox" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: RED;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>

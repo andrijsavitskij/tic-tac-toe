@@ -18,8 +18,8 @@ public class Game {
     public Game(Pane field){
         this.field = field;
 
-        double width = field.getWidth()/3;
-        double height = field.getHeight()/3;
+        double width = field.getPrefWidth()/3;
+        double height = field.getPrefHeight()/3;
         double x = 0, y = 0;
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
@@ -125,8 +125,8 @@ public class Game {
     }
 
     private void drawGF(){
-        var width = field.getWidth();
-        var height = field.getHeight();
+        var width = field.getPrefWidth();
+        var height = field.getPrefHeight();
 
         Line hl1 = new Line(width / 3, 0, width / 3, height);
         Line hl2 = new Line((width / 3) * 2, 0, (width / 3) * 2, height);

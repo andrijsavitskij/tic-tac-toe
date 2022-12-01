@@ -33,15 +33,15 @@ public class MainHBox {
 
     @FXML
     public void initialize() {
+        Platform.runLater(this::resize);
         Platform.runLater(()-> {
-            resize();
             game = new Game(GameField);
             game.newGame();
         });
 
 
-        //LogSinInOut.setPane(RVBox);
-        //LogSinInOut.start();
+        LogSinInOut.setPane(RVBox);
+        LogSinInOut.start();
 
         Platform.runLater(()-> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -56,6 +56,7 @@ public class MainHBox {
 
     }
 
+    @Deprecated
     private void resize(){
         double hw = mainHBox.getWidth()/2;
         double hh = mainHBox.getHeight()/2;
@@ -66,7 +67,6 @@ public class MainHBox {
         DownFieldHBox.setPrefHeight(hh/2);
         GameField.setPrefWidth(hw-CORR);
         GameField.setPrefHeight(hh - CORR);
-
     }
 
 }
