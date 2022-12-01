@@ -1,4 +1,4 @@
-package com.example.tictactoe.some.gameStaff;
+package com.example.tictactoe.some;
 
 public record Player(String name, int winCount, long id) {
     @Override

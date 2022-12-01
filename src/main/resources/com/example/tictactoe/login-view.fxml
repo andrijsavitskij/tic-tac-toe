@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane fx:id="APMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="233.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.tictactoe.controller.LogInView">
+            fx:controller="com.example.tictactoe.controller.LogIn">
    <Button fx:id="BSingin" layoutX="196.0" layoutY="175.0" mnemonicParsing="false" onAction="#OnBSingin"
            prefHeight="46.0" prefWidth="112.0" text="SingIn"/>
    <Label layoutX="9.0" layoutY="14.0" text="Login"/>

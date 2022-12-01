@@ -1,5 +1,6 @@
 package com.example.tictactoe.some.gameStaff;
 
+import com.example.tictactoe.some.Player;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
 import javafx.application.Platform;
@@ -73,6 +74,10 @@ public class Game {
             } else if (titles.stream().noneMatch(Title::isEmpty)) {
                 Platform.runLater(()-> field.setOnMouseClicked(event -> newGame()));
             }
+            else {
+                return;
+            }
+            com.example.tictactoe.some.Settings.playerPlusWin();
         }
     }
 

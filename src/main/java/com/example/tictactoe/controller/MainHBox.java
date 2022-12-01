@@ -1,6 +1,7 @@
 package com.example.tictactoe.controller;
 
 import com.example.tictactoe.HelloApplication;
+import com.example.tictactoe.some.LogSinInOut;
 import com.example.tictactoe.some.gameStaff.Game;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -36,15 +37,8 @@ public class MainHBox {
             game.newGame();
         });
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-            RVBox.getChildren().add(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        LogSinInOut.setPane(RVBox);
+        LogSinInOut.start();
     }
-
-    //// TODO: 30.11.2022 log in/out/singIn
-
 
 }

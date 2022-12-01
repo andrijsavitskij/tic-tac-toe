@@ -1,5 +1,7 @@
 package com.example.tictactoe.some.gameStaff;
 
+import com.example.tictactoe.some.Player;
+
 import java.util.ArrayList;
 
 public class Settings {
