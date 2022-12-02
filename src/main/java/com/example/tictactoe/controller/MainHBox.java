@@ -3,6 +3,7 @@ package com.example.tictactoe.controller;
 import com.example.tictactoe.HelloApplication;
 import com.example.tictactoe.some.LogSinInOut;
 import com.example.tictactoe.some.gameStaff.Game;
+import com.example.tictactoe.some.newGameStaff.GameController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,13 +36,14 @@ public class MainHBox {
     public void initialize() {
         Platform.runLater(this::resize);
         Platform.runLater(()-> {
-            game = new Game(GameField);
-            game.newGame();
+            new GameController(GameField,3,3);
+            //game = new Game(GameField);
+            //game.newGame();
         });
 
 
-        LogSinInOut.setPane(RVBox);
-        LogSinInOut.start();
+        //LogSinInOut.setPane(RVBox);
+        //LogSinInOut.start();
 
         Platform.runLater(()-> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -53,6 +55,15 @@ public class MainHBox {
             });
         });
 
+
+        ///* //---------DEBUG
+        GameField.setStyle("-fx-background-color: GREEN;");
+        GameField.getParent().setStyle("-fx-background-color: RED;");
+        RVBox.setStyle("-fx-background-color: GREY;");
+        LVBox.setStyle("-fx-background-color: GREY;");
+        UpFieldHBox.setStyle("-fx-background-color: YELLOW;");
+        DownFieldHBox.setStyle("-fx-background-color: YELLOW;");
+        //*/
 
     }
 

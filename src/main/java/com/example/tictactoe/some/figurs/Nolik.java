@@ -18,11 +18,15 @@ public class Nolik implements Figura {
     }
     @Override
     public Group getNew(double X, double Y, double R){
-        return new Nolik(X,Y,R).getGroup();
+        return new Nolik(X,Y,R).get();
     }
     @Override
-    public Group getGroup(){
+    public Group get(){
         return group;
     }
 
+    @Override
+    public Name getName(){
+        return Name.nolik;
+    }
 }

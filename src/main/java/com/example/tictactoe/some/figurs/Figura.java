@@ -1,19 +1,16 @@
 package com.example.tictactoe.some.figurs;
 
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 
 public interface Figura {
-
-
     Group getNew(double X, double Y, double L);
 
-    Group getGroup();
+    public enum Name {
+        krestik,nolik
+    }
+    Group get();
 
-//    default String getName(){
-//        if (this.getClass().equals(Nolik.class))    return FigName.Nolik.toString();
-//        if (this.getClass().equals(Krestik.class))  return FigName.Krestik.toString();
-//        return null;
-//    }
-
+    Name getName();
 
 }

@@ -1,6 +1,5 @@
 package com.example.tictactoe.some.gameStaff;
 
-import com.example.tictactoe.some.Player;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
 import javafx.application.Platform;
@@ -43,7 +42,7 @@ public class Game {
     private void newMove(Title title){
         if(move) title.setFigura(Krestik.class); // bad
         else title.setFigura(Nolik.class);
-        field.getChildren().add(title.getFigura().getGroup());
+        field.getChildren().add(title.getFigura().get());
         move = !move;
         whoWin(title);
     }
