@@ -3,6 +3,8 @@ package com.example.tictactoe.some.newGameStaff;
 import com.example.tictactoe.some.figurs.Figura;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
+import com.example.tictactoe.some.gameStaff.Title;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -21,6 +23,7 @@ public class GameController {
     private double lineStoke = 1;
     private ArrayList<Segment> segments;
     private ArrayList<MyPlayerRecord_just_for_fName> players;
+    private final int winLineaaaaaaw = 3;
     private int playersMove = 0;
     public GameController(Pane pane,int columCount,int rowCount){
         flore = new GridPane();
@@ -30,7 +33,7 @@ public class GameController {
         this.columCount = columCount;
         this.rowCount = rowCount;
         setNewSize(pane.getPrefHeight(),pane.getPrefWidth());
-                                        /* TEST */                            flore.setStyle("-fx-background-color: RED;");
+                                        /* TEST */                            flore.setStyle("-fx-background-color: RED;"); // TODO: remove
         createSegments();
 
         players = new ArrayList<>();
@@ -64,6 +67,11 @@ public class GameController {
         }
     }
 
+    private void win(Segment segment){
+        // TODO: 02.12.2022 ОПЯТЬ ТАЖЕ ХУИТА
+        //
+    }
+
 
 }
 class Segment {
@@ -75,7 +83,7 @@ class Segment {
     Segment(double h, double w){
         flor = new Rectangle(w,h);
         group = new Group();
-                            /* TEST */                 flor.setFill(Color.WHEAT);
+                            /* TEST */                 flor.setFill(Color.WHEAT);// TODO: remove
         group.getChildren().add(flor);
     }
 

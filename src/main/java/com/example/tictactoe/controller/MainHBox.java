@@ -36,7 +36,7 @@ public class MainHBox {
     public void initialize() {
         Platform.runLater(this::resize);
         Platform.runLater(()-> {
-            new GameController(GameField,3,3);
+            new GameController(GameField,3,3); // FIXME: 02.12.2022 только квадратные матрицы((
             //game = new Game(GameField);
             //game.newGame();
         });
@@ -56,7 +56,7 @@ public class MainHBox {
         });
 
 
-        ///* //---------DEBUG
+        ///* //---------DEBUG // TODO: remove
         GameField.setStyle("-fx-background-color: GREEN;");
         GameField.getParent().setStyle("-fx-background-color: RED;");
         RVBox.setStyle("-fx-background-color: GREY;");
