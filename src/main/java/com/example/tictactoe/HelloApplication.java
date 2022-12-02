@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainHBox-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),1280,720);
-        stage.setResizable(false); // no resize
+        //stage.setResizable(false); // no resize
         stage.setTitle("Tic-Tac-Toe");
         stage.setScene(scene);
         stage.show();
