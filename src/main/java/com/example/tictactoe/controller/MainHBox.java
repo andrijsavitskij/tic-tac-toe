@@ -7,13 +7,13 @@ import com.example.tictactoe.some.newGameStaff.GameController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-
 
 public class MainHBox {
 
@@ -29,18 +29,18 @@ public class MainHBox {
     private VBox RVBox;
     @FXML
     private HBox mainHBox;
-    private static Game game;
+    private static GameController game;
 
 
     @FXML
     public void initialize() {
         Platform.runLater(this::resize);
         Platform.runLater(()-> {
-            new GameController(GameField,3,3); // FIXME: 02.12.2022 только квадратные матрицы((
+            game = new GameController(GameField,3,3); // FIXME: 02.12.2022 только квадратные матрицы((
+            game.newGame();
             //game = new Game(GameField);
             //game.newGame();
         });
-
 
         //LogSinInOut.setPane(RVBox);
         //LogSinInOut.start();
@@ -48,10 +48,21 @@ public class MainHBox {
         Platform.runLater(()-> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 resize();
+                game.resize();
             });
 
             mainHBox.heightProperty().addListener((obs, oldVal, newVal) -> {
                 resize();
+                game.resize();
+            });
+        });
+
+        Platform.runLater(()->{
+            Button b = new Button();
+            b.setText("new game");
+            LVBox.getChildren().add(b);
+            b.setOnAction(event -> {
+                game.newGame();
             });
         });
 
