@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="new gameField">
+    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="resize is working now">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_22_20_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_22_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java" afterDir="false" />
@@ -263,7 +265,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670343534567</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="resize is working now">
+      <created>1670353698175</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1670353698175</updated>
+    </task>
+    <task id="LOCAL-00025" summary="resize is working now">
+      <created>1670354092673</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1670354092673</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,20 +303,31 @@
     <MESSAGE value="v0.2(no resize:( )" />
     <MESSAGE value="." />
     <MESSAGE value="new gameField" />
-    <option name="LAST_COMMIT_MESSAGE" value="new gameField" />
+    <MESSAGE value="resize is working now" />
+    <option name="LAST_COMMIT_MESSAGE" value="resize is working now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java</url>
-          <line>161</line>
-          <option name="timeStamp" value="49" />
+          <line>167</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java</url>
-          <line>165</line>
-          <option name="timeStamp" value="50" />
+          <line>172</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/tictactoe/some/newGameStaff/GameController.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

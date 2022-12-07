@@ -36,7 +36,7 @@ public class MainHBox {
     public void initialize() {
         Platform.runLater(this::resize);
         Platform.runLater(()-> {
-            game = new GameController(GameField,3,3); // FIXME: 02.12.2022 только квадратные матрицы((
+            game = new GameController(GameField,4,4,3); // FIXME: 02.12.2022 только квадратные матрицы((
             game.newGame();
             //game = new Game(GameField);
             //game.newGame();

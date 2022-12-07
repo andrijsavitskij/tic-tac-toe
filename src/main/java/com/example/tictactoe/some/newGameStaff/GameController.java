@@ -4,11 +4,14 @@ import com.example.tictactoe.some.figurs.Figura;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,39 +21,55 @@ public class GameController {
 
     private GridPane flore;
     private final Pane pane;
-    private final int columCount, rowCount;
+    private final int columnCount, rowCount;
     private double floreHeight, floreWeight, segmentHeight,segmentWeight;
     private double lineStoke;
     private ArrayList<Segment> segments;
     private ArrayList<MyPlayerRecord_just_for_fName> players;
-    private final int winLine = 3;
+    private final int winLine;
     private int playersMove = 0;
-    public GameController(Pane pane,int columCount,int rowCount){
+
+    /**
+     * Конструктор
+     */
+    public GameController(Pane pane,int columns,int rows, int winLine){
         this.pane = pane;
-        this.columCount = columCount;
-        this.rowCount = rowCount;
+        this.columnCount = columns;
+        this.rowCount = rows;
+        this.winLine = winLine;
 
         players = new ArrayList<>();
         players.add(new MyPlayerRecord_just_for_fName(Figura.Name.krestik));
         players.add(new MyPlayerRecord_just_for_fName(Figura.Name.nolik));
 
-        setNewSize();
+        newSize();
     }
-    private void createSegments(){
-        segments = new ArrayList<>(columCount*rowCount);
-        for (int i = 0;i < columCount*rowCount; i++)
-            segments.add(new Segment(segmentHeight,segmentWeight));
-        for (var i : segments)
-            i.getGroup().setOnMouseClicked((event) -> {
-                 newMove(i);
-            });
+    /**
+     * Перемальовує все поле при зміні розмірів
+     */
+    public void resize(){
+        //clear();
+        newSize();
+        for(var i : segments) i.resize(segmentHeight,segmentWeight);
+        drawFlore();
+        drawSegments();
     }
-    private void drawSegments(){
-        for(int i = 0; i < columCount; i++)
-            for(int j = 0; j < rowCount; j++)
-                flore.add(segments.get((columCount*i)+j).getGroup(),j,i);
+    /**
+     * Запускає нову гру
+     */
+    public void newGame(){
+        //clear();
+        drawFlore();
+        createSegments();
+        drawSegments();
+    }
 
-    //        ///  DEBUG // нумерує сегменти
+    private void drawSegments(){
+        for(int i = 0; i < columnCount; i++)
+            for(int j = 0; j < rowCount; j++)
+                flore.add(segments.get((columnCount *i)+j).getGroup(),j,i);
+
+        //        ///  DEBUG // нумерує сегменти
 //        for (var i : segments) {
 //            var v = new Label();
 //            v.setText(String.valueOf(segments.indexOf(i)));
@@ -58,13 +77,12 @@ public class GameController {
 //            i.getGroup().getChildren().add(v);
 //        }
     }
-    public void setNewSize(){
-        double h =pane.getPrefHeight(), w =pane.getPrefWidth();
-        floreHeight = h;
-        floreWeight = w;
-        segmentHeight = (floreHeight - lineStoke*(columCount-1))  /columCount;
-        segmentWeight = (floreWeight - lineStoke*(rowCount-1))    /rowCount;
-        lineStoke = (Math.min(h,w)/100) * 2;
+    private void drawFlore(){
+        flore = new GridPane();
+        pane.getChildren().add(flore);
+        flore.setVgap(lineStoke);
+        flore.setHgap(lineStoke);
+        /* DEBUG // TODO: remove */ flore.setStyle("-fx-background-color: RED;");
     }
     private void newMove(Segment segment){
         if(segment.isEmpty()){
@@ -73,63 +91,113 @@ public class GameController {
             win(segment);
         }
     }
-    private void win(Segment segment){
+    private void newSize(){
+        double h =pane.getPrefHeight(), w =pane.getPrefWidth();
+        floreHeight = h;
+        floreWeight = w;
+        segmentHeight = (floreHeight - lineStoke*(columnCount -1))  / columnCount;
+        segmentWeight = (floreWeight - lineStoke*(rowCount-1))    /rowCount;
+        lineStoke = (Math.min(h,w)/100) * 2;
+    }
+    private void createSegments(){
+        segments = new ArrayList<>(columnCount *rowCount);
+        for (int i = 0; i < columnCount *rowCount; i++)
+            segments.add(new Segment(segmentHeight,segmentWeight));
+        for (var i : segments)
+            i.getGroup().setOnMouseClicked((event) -> {
+                 newMove(i);
+            });
+
+        // DEBUG // todo delete
+        for (var i : segments) {
+            var v = new Label();
+            v.setText(String.valueOf(segments.indexOf(i)));
+            v.setFont(Font.font(10));
+            i.getGroup().getChildren().add(v);
+        }
+    }
+
+    private void win(Segment segment) {
         // 1) собрать все (x)+-(n-1) елементи в масив
         // 2) найти n елемента с одинаковой
         // 3) нарисовать линию через элементы
-
-        ArrayList<Segment> list = new ArrayList<>();
         final int ID = segments.indexOf(segment);
-        // ----------------------------------------------  -
-        {
-            for (int i = ID - (winLine - 1); i < ID + winLine - 1; i++)
+        final int WL = (winLine - 1);
+        Lambda hor = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID - WL; i <= ID + WL; i++) {
                 if (i >= 0 && i < segments.size())
-                    list.add(segments.get(i));
-            var v = myBestFun(list, segment);
-            if (null != v) {
-                myBestestFum(v[0], v[1]);
-                return;
+                    arr.add(segments.get(i));
+                //if (i % columnCount == 0) break; // out of left side
+                if (i % columnCount == columnCount) break;// out of right side
             }
-        }
-        // ----------------------------------------------  |
-        {
-            for (int i = ID - ((winLine - 1) * columCount); i < ID + ((winLine - 1) * columCount); i += columCount) {
+            return arr;
+        };//--  -
+        Lambda ver = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID - (WL * columnCount); i <= ID + (WL * columnCount); i += columnCount) {
                 if (i >= 0 && i < segments.size())
-                    list.add(segments.get(i));
+                    arr.add(segments.get(i));
+                if (i % columnCount == 0) break; // out of left side
+                if (i % columnCount == columnCount) break;// out of right side
             }
-            var v = myBestFun(list, segment);
-            if (null != v) {
-                myBestestFum(v[0], v[1]);
-                return;
-            }
-        }
-        // ----------------------------------------------  \
-        {
-            for (int i = ID - ((winLine - 1) * columCount) - 1; i < ID + ((winLine - 1) * columCount) + 1; i += columCount + 1)
+            return arr;
+        };//--  |
+        Lambda rdi = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID - (WL * columnCount) - WL; i <= ID + (WL * columnCount) + WL; i += columnCount + 1) {
                 if (i >= 0 && i < segments.size())
-                    list.add(segments.get(i));
-            var v = myBestFun(list, segment);
-            if (null != v) {
-                myBestestFum(v[0], v[1]);
-                return;
+                    arr.add(segments.get(i));
+                if (i % columnCount == 0) break; // out of left side
+                if (i % columnCount == columnCount) break;// out of right side
             }
-        }
-        // ----------------------------------------------  /
-        {
-            for (int i = ID - ((winLine - 1) * columCount) + 1; i < ID + ((winLine - 1) * columCount) - 1; i += columCount - 1)
-                if (i >= 0 && i < segments.size())
-                    list.add(segments.get(i));
-            var v = myBestFun(list, segment);
-            if (null != v) {
-                myBestestFum(v[0], v[1]);
-                return;
+            return arr;
+        };//--  \
+        Lambda ldi = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID - (WL * columnCount) + WL; i <= ID + (WL * columnCount) - WL; i += columnCount - 1) {
+                if (i >= 0 && i < segments.size()) arr.add(segments.get(i));
+                if (i % columnCount == 0) break; // out of left side
+                if (i % columnCount == columnCount) break;// out of right side
             }
+            return arr;
+        };//--  /
+
+        var v = isWin(segment, hor);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
         }
+        v = isWin(segment, ver);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
+        }
+        v = isWin(segment, rdi);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
+        }
+        v = isWin(segment, ldi);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+        };
+        //
+    }
+    // 0 - x, 1 - y;
+    @Contract(value = "_ -> new", pure = true)
+    private int @NotNull [] toMat(int id){
+        return new int[]{(id-(id%columnCount)*columnCount),id % columnCount};
+    }
+    @Contract(value = "_ -> new",pure = true)
+    private int toMat(int @NotNull [] mat){
+        return mat[0]+(mat[1]*columnCount);
     }
     /**
      * @return Segment if WIN or null if not WIN;
      */
-    private @Nullable Segment[] myBestFun(ArrayList<Segment> list, Segment segment){
+    private @Nullable Segment[] isWin(Segment segment, Lambda l){
+        ArrayList<Segment> list = l.run();
         int cc = 0;
         Segment ss = null;
         for (var i : list) {
@@ -152,7 +220,7 @@ public class GameController {
 //        double sy = start.getGroup().getScaleY();
 //        double ex = end.getGroup().getScaleX();
 //        double ey = end.getGroup().getScaleY();
-        double h = (floreHeight - lineStoke*(columCount-1))  /columCount;
+        double h = (floreHeight - lineStoke*(columnCount -1))  / columnCount;
         double w = (floreWeight - lineStoke*(rowCount-1))    /rowCount;
         double sx = start.getGroup().getLayoutX()+(w/2);
         double sy = start.getGroup().getLayoutY()+(h/2);
@@ -166,27 +234,7 @@ public class GameController {
         pane.getChildren().add(line);
 
     }
-    public void newGame(){
-        //clear();
-        drawFlore();
-        createSegments();
-        drawSegments();
-    }
-    private void drawFlore(){
-        flore = new GridPane();
-        pane.getChildren().add(flore);
-        flore.setVgap(lineStoke);
-        flore.setHgap(lineStoke);
-        /* DEBUG // TODO: remove */ flore.setStyle("-fx-background-color: RED;");
-    }
-    public void resize(){
-        //clear();
-        setNewSize();
-        for(var i : segments) i.resize(segmentHeight,segmentWeight);
-        drawFlore();
-        drawSegments();
-    }
-    @Deprecated // недороблена  (чи потрібна?)
+    @Deprecated // недороблена (чи потрібна?)
     private void clear(){
         flore.getChildren().clear();
         //pane.getChildren().clear();
@@ -195,6 +243,7 @@ public class GameController {
     // FIXME--low--: 06.12.2022 баг, при ресайзі не вся площина панелі займається гадаю ( не завжди )
     // FIXME--low--: 06.12.2022 баг, при створенні і при ресайзі нижній рядок вилазить за рамки розміру ( не завжди )
     // FIXME--high--: 03.12.2022 АААААААа диаганали не работают, линия рисуются ровно от центра (do it bigger)
+    // FIXME--medium--: 07.12.2022 ...
 
 }
 
@@ -242,4 +291,8 @@ class Segment {
 }
 
 record MyPlayerRecord_just_for_fName(Figura.Name fig){
+}
+
+interface Lambda {
+    ArrayList<Segment> run();
 }
