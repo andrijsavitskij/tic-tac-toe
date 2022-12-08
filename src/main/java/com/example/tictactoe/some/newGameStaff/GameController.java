@@ -21,7 +21,7 @@ public class GameController {
 
     private GridPane flore;
     private final Pane pane;
-    private final int columnCount, rowCount;
+    private final int col, row;
     private double floreHeight, floreWeight, segmentHeight,segmentWeight;
     private double lineStoke;
     private ArrayList<Segment> segments;
@@ -34,8 +34,8 @@ public class GameController {
      */
     public GameController(Pane pane,int columns,int rows, int winLine){
         this.pane = pane;
-        this.columnCount = columns;
-        this.rowCount = rows;
+        this.col = columns;
+        this.row = rows;
         this.winLine = winLine;
 
         players = new ArrayList<>();
@@ -65,9 +65,9 @@ public class GameController {
     }
 
     private void drawSegments(){
-        for(int i = 0; i < columnCount; i++)
-            for(int j = 0; j < rowCount; j++)
-                flore.add(segments.get((columnCount *i)+j).getGroup(),j,i);
+        for(int i = 0; i < col; i++)
+            for(int j = 0; j < row; j++)
+                flore.add(segments.get((col *i)+j).getGroup(),j,i);
 
         //        ///  DEBUG // нумерує сегменти
 //        for (var i : segments) {
@@ -88,20 +88,20 @@ public class GameController {
         if(segment.isEmpty()){
             segment.setFigura(players.get(playersMove++).fig());
             if(playersMove >= players.size()) playersMove = 0;
-            win(segment);
+            newWin(segment);
         }
     }
     private void newSize(){
         double h =pane.getPrefHeight(), w =pane.getPrefWidth();
         floreHeight = h;
         floreWeight = w;
-        segmentHeight = (floreHeight - lineStoke*(columnCount -1))  / columnCount;
-        segmentWeight = (floreWeight - lineStoke*(rowCount-1))    /rowCount;
+        segmentHeight = (floreHeight - lineStoke*(col -1))  / col;
+        segmentWeight = (floreWeight - lineStoke*(row -1))    / row;
         lineStoke = (Math.min(h,w)/100) * 2;
     }
     private void createSegments(){
-        segments = new ArrayList<>(columnCount *rowCount);
-        for (int i = 0; i < columnCount *rowCount; i++)
+        segments = new ArrayList<>(col * row);
+        for (int i = 0; i < col * row; i++)
             segments.add(new Segment(segmentHeight,segmentWeight));
         for (var i : segments)
             i.getGroup().setOnMouseClicked((event) -> {
@@ -116,7 +116,7 @@ public class GameController {
             i.getGroup().getChildren().add(v);
         }
     }
-
+    @Deprecated
     private void win(Segment segment) {
         // 1) собрать все (x)+-(n-1) елементи в масив
         // 2) найти n елемента с одинаковой
@@ -129,36 +129,36 @@ public class GameController {
                 if (i >= 0 && i < segments.size())
                     arr.add(segments.get(i));
                 //if (i % columnCount == 0) break; // out of left side
-                if (i % columnCount == columnCount) break;// out of right side
+                if (i % col == col) break;// out of right side
             }
             return arr;
         };//--  -
         Lambda ver = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * columnCount); i <= ID + (WL * columnCount); i += columnCount) {
+            for (int i = ID - (WL * col); i <= ID + (WL * col); i += col) {
                 if (i >= 0 && i < segments.size())
                     arr.add(segments.get(i));
-                if (i % columnCount == 0) break; // out of left side
-                if (i % columnCount == columnCount) break;// out of right side
+                if (i % col == 0) break; // out of left side
+                if (i % col == col) break;// out of right side
             }
             return arr;
         };//--  |
         Lambda rdi = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * columnCount) - WL; i <= ID + (WL * columnCount) + WL; i += columnCount + 1) {
+            for (int i = ID - (WL * col) - WL; i <= ID + (WL * col) + WL; i += col + 1) {
                 if (i >= 0 && i < segments.size())
                     arr.add(segments.get(i));
-                if (i % columnCount == 0) break; // out of left side
-                if (i % columnCount == columnCount) break;// out of right side
+                if (i % col == 0) break; // out of left side
+                if (i % col == col) break;// out of right side
             }
             return arr;
         };//--  \
         Lambda ldi = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * columnCount) + WL; i <= ID + (WL * columnCount) - WL; i += columnCount - 1) {
+            for (int i = ID - (WL * col) + WL; i <= ID + (WL * col) - WL; i += col - 1) {
                 if (i >= 0 && i < segments.size()) arr.add(segments.get(i));
-                if (i % columnCount == 0) break; // out of left side
-                if (i % columnCount == columnCount) break;// out of right side
+                if (i % col == 0) break; // out of left side
+                if (i % col == col) break;// out of right side
             }
             return arr;
         };//--  /
@@ -184,14 +184,71 @@ public class GameController {
         };
         //
     }
+    private void newWin(Segment segment) {
+        final int[] ID = toMat(segments.indexOf(segment));
+        final int WL = (winLine - 1);
+        Lambda hor = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID[0] - WL,j = ID[1]; i <= ID[0] + WL; i++)
+                if(i>=0 && i <= row && j >= 0 && j <= col)
+                    arr.add(segments.get(toMat(new int[]{i,j})));
+            return arr;
+        };//--  -
+        Lambda ver = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID[0],j = ID[1] - WL; j <= ID[1] + WL; j++) {
+                if(i>=0 && i <= row && j >= 0 && j <= col)
+                    arr.add(segments.get(toMat(new int[]{i,j})));
+            }
+            return arr;
+        };//--  |
+        Lambda rdi = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID[0] - WL,j = ID[1] - WL; i <= ID[0] + WL || j <= ID[1] + WL; i++,j++) {
+                if(i>=0 && i <= row && j >= 0 && j <= col)
+                    arr.add(segments.get(toMat(new int[]{i,j})));
+            }
+            return arr;
+        };//--  \
+        Lambda ldi = () -> {
+            ArrayList<Segment> arr = new ArrayList<>();
+            for (int i = ID[0] + WL,j = ID[1] - WL; i <= ID[0] - WL && j <= ID[1] + WL; i--,j++) {
+                if(i>=0 && i <= row && j >= 0 && j <= col)
+                    arr.add(segments.get(toMat(new int[]{i,j})));
+            }
+            return arr;
+        };//--  /
+
+        var v = isWin(segment, hor);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
+        }
+        v = isWin(segment, ver);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
+        }
+        v = isWin(segment, rdi);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+            return;
+        }
+        v = isWin(segment, ldi);
+        if (null != v) {
+            myBestestFum(v[0], v[1]);
+        };
+        //
+    }
+
     // 0 - x, 1 - y;
     @Contract(value = "_ -> new", pure = true)
     private int @NotNull [] toMat(int id){
-        return new int[]{(id-(id%columnCount)*columnCount),id % columnCount};
+        return new int[]{id % row,id / col};
     }
     @Contract(value = "_ -> new",pure = true)
     private int toMat(int @NotNull [] mat){
-        return mat[0]+(mat[1]*columnCount);
+        return mat[0]+(mat[1]* col);
     }
     /**
      * @return Segment if WIN or null if not WIN;
@@ -220,8 +277,8 @@ public class GameController {
 //        double sy = start.getGroup().getScaleY();
 //        double ex = end.getGroup().getScaleX();
 //        double ey = end.getGroup().getScaleY();
-        double h = (floreHeight - lineStoke*(columnCount -1))  / columnCount;
-        double w = (floreWeight - lineStoke*(rowCount-1))    /rowCount;
+        double h = (floreHeight - lineStoke*(col -1))  / col;
+        double w = (floreWeight - lineStoke*(row -1))    / row;
         double sx = start.getGroup().getLayoutX()+(w/2);
         double sy = start.getGroup().getLayoutY()+(h/2);
         double ex = end.getGroup().getLayoutX()+(w/2);
