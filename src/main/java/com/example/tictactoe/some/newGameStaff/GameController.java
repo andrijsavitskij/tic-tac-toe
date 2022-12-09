@@ -88,10 +88,11 @@ public class GameController {
         /* DEBUG // TODO: remove */ flore.setStyle("-fx-background-color: RED;");
     }
     private void newMove(Segment segment){
-        if(segment.isEmpty()){
+        if(!segment.isNoEmpty()){
             segment.setFigura(players.get(playersMove++).fig());
             if(playersMove >= players.size()) playersMove = 0;
             win(segment);
+            ifWin();
         }
     }
     private void newSize(){
@@ -175,7 +176,7 @@ public class GameController {
         int cc = 0;
         Segment ss = null;
         for (var i : list) {
-            if ( !i.isEmpty() && i.getFiguraName().equals(segment.getFiguraName())) {
+            if ( i.isNoEmpty() && i.getFiguraName().equals(segment.getFiguraName())) {
                 if (++cc == 1) {
                     ss = i;
                 }
@@ -209,7 +210,22 @@ public class GameController {
         line.setStroke(Color.DARKBLUE);
         line.toFront();
         pane.getChildren().add(line);
-
+    }
+    private void ifWin() {
+        //WIN
+        if (arrLineToDraw.size() >= 1) { // for future
+            flore.setOnMouseClicked(event -> {
+                flore.setOnMouseClicked(event1 -> {});
+                newGame();
+            });
+        }
+        //DRAW
+        else if(segments.stream().allMatch(Segment::isNoEmpty)){
+            flore.setOnMouseClicked(event -> {
+                flore.setOnMouseClicked(event1 -> {});
+                newGame();
+            });
+        }
     }
     @Deprecated // недороблена (чи потрібна?)
     private void clear(){
@@ -237,8 +253,8 @@ class Segment {
     public Figura.Name getFiguraName() {
         return figura.getName();
     }
-    public boolean isEmpty(){
-        return figura == null;
+    public boolean isNoEmpty(){
+        return figura != null;
     }
     public void setFigura(@NotNull Figura.Name fName) {
         double cx = (flor.getWidth() - flor.getX()) /2;
@@ -256,7 +272,7 @@ class Segment {
     public void resize(double h, double w){
         flor.setWidth(w);
         flor.setHeight(h);
-        if(!isEmpty()) {
+        if(isNoEmpty()) {
             group.getChildren().remove(figura.get());
             setFigura(figura.getName());
         }
