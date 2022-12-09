@@ -88,7 +88,7 @@ public class GameController {
         if(segment.isEmpty()){
             segment.setFigura(players.get(playersMove++).fig());
             if(playersMove >= players.size()) playersMove = 0;
-            newWin(segment);
+            win(segment);
         }
     }
     private void newSize(){
@@ -116,128 +116,43 @@ public class GameController {
             i.getGroup().getChildren().add(v);
         }
     }
-    @Deprecated
     private void win(Segment segment) {
-        // 1) собрать все (x)+-(n-1) елементи в масив
-        // 2) найти n елемента с одинаковой
-        // 3) нарисовать линию через элементы
-        final int ID = segments.indexOf(segment);
-        final int WL = (winLine - 1);
-        Lambda hor = () -> {
-            ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - WL; i <= ID + WL; i++) {
-                if (i >= 0 && i < segments.size())
-                    arr.add(segments.get(i));
-                //if (i % columnCount == 0) break; // out of left side
-                if (i % col == col) break;// out of right side
-            }
-            return arr;
-        };//--  -
-        Lambda ver = () -> {
-            ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * col); i <= ID + (WL * col); i += col) {
-                if (i >= 0 && i < segments.size())
-                    arr.add(segments.get(i));
-                if (i % col == 0) break; // out of left side
-                if (i % col == col) break;// out of right side
-            }
-            return arr;
-        };//--  |
-        Lambda rdi = () -> {
-            ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * col) - WL; i <= ID + (WL * col) + WL; i += col + 1) {
-                if (i >= 0 && i < segments.size())
-                    arr.add(segments.get(i));
-                if (i % col == 0) break; // out of left side
-                if (i % col == col) break;// out of right side
-            }
-            return arr;
-        };//--  \
-        Lambda ldi = () -> {
-            ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID - (WL * col) + WL; i <= ID + (WL * col) - WL; i += col - 1) {
-                if (i >= 0 && i < segments.size()) arr.add(segments.get(i));
-                if (i % col == 0) break; // out of left side
-                if (i % col == col) break;// out of right side
-            }
-            return arr;
-        };//--  /
-
-        var v = isWin(segment, hor);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, ver);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, rdi);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, ldi);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-        };
-        //
-    }
-    private void newWin(Segment segment) {
         final int[] ID = toMat(segments.indexOf(segment));
         final int WL = (winLine - 1);
         Lambda hor = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
             for (int i = ID[0] - WL,j = ID[1]; i <= ID[0] + WL; i++)
-                if(i>=0 && i <= row && j >= 0 && j <= col)
+                if(i>=0 && i < row && j >= 0 && j < col)
                     arr.add(segments.get(toMat(new int[]{i,j})));
             return arr;
         };//--  -
         Lambda ver = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID[0],j = ID[1] - WL; j <= ID[1] + WL; j++) {
-                if(i>=0 && i <= row && j >= 0 && j <= col)
+            for (int i = ID[0],j = ID[1] - WL; j <= ID[1] + WL; j++)
+                if(i>=0 && i < row && j >= 0 && j < col)
                     arr.add(segments.get(toMat(new int[]{i,j})));
-            }
             return arr;
         };//--  |
         Lambda rdi = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID[0] - WL,j = ID[1] - WL; i <= ID[0] + WL || j <= ID[1] + WL; i++,j++) {
-                if(i>=0 && i <= row && j >= 0 && j <= col)
+            for (int i = ID[0] - WL,j = ID[1] - WL; i <= ID[0] + WL || j <= ID[1] + WL; i++,j++)
+                if(i>=0 && i < row && j >= 0 && j < col)
                     arr.add(segments.get(toMat(new int[]{i,j})));
-            }
             return arr;
         };//--  \
         Lambda ldi = () -> {
             ArrayList<Segment> arr = new ArrayList<>();
-            for (int i = ID[0] + WL,j = ID[1] - WL; i <= ID[0] - WL && j <= ID[1] + WL; i--,j++) {
-                if(i>=0 && i <= row && j >= 0 && j <= col)
+            for (int i = ID[0] + WL,j = ID[1] - WL; i >= ID[0] - WL && j <= ID[1] + WL; i--,j++)
+                if(i>=0 && i < row && j >= 0 && j < col)
                     arr.add(segments.get(toMat(new int[]{i,j})));
-            }
             return arr;
         };//--  /
 
-        var v = isWin(segment, hor);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, ver);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, rdi);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-            return;
-        }
-        v = isWin(segment, ldi);
-        if (null != v) {
-            myBestestFum(v[0], v[1]);
-        };
+        myBestestFum(isWin(segment, hor));
+        myBestestFum(isWin(segment, ver));
+        myBestestFum(isWin(segment, rdi));
+        myBestestFum(isWin(segment, ldi));
+
         //
     }
 
@@ -272,11 +187,13 @@ public class GameController {
         }
         return null;
     }
-    private void myBestestFum(Segment start, Segment end){
+    private void myBestestFum(Segment[] segs){
 //        double sx = start.getGroup().getChildren().get(0).getScaleX();
 //        double sy = start.getGroup().getScaleY();
 //        double ex = end.getGroup().getScaleX();
 //        double ey = end.getGroup().getScaleY();
+        if(segs == null) return;
+        Segment start = segs[0], end = segs[1];
         double h = (floreHeight - lineStoke*(col -1))  / col;
         double w = (floreWeight - lineStoke*(row -1))    / row;
         double sx = start.getGroup().getLayoutX()+(w/2);
@@ -299,9 +216,6 @@ public class GameController {
 
     // FIXME--low--: 06.12.2022 баг, при ресайзі не вся площина панелі займається гадаю ( не завжди )
     // FIXME--low--: 06.12.2022 баг, при створенні і при ресайзі нижній рядок вилазить за рамки розміру ( не завжди )
-    // FIXME--high--: 03.12.2022 АААААААа диаганали не работают, линия рисуются ровно от центра (do it bigger)
-    // FIXME--medium--: 07.12.2022 ...
-
 }
 
 
