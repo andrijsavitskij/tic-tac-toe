@@ -28,6 +28,7 @@ public class GameController {
     private ArrayList<MyPlayerRecord_just_for_fName> players;
     private final int winLine;
     private int playersMove = 0;
+    private ArrayList<Segment[]> arrLineToDraw;
 
     /**
      * Конструктор
@@ -53,6 +54,7 @@ public class GameController {
         for(var i : segments) i.resize(segmentHeight,segmentWeight);
         drawFlore();
         drawSegments();
+        for(var i : arrLineToDraw) drawLine(i);
     }
     /**
      * Запускає нову гру
@@ -62,6 +64,7 @@ public class GameController {
         drawFlore();
         createSegments();
         drawSegments();
+        arrLineToDraw = new ArrayList<Segment[]>(); //todo to clear
     }
 
     private void drawSegments(){
@@ -148,14 +151,13 @@ public class GameController {
             return arr;
         };//--  /
 
-        myBestestFum(isWin(segment, hor));
-        myBestestFum(isWin(segment, ver));
-        myBestestFum(isWin(segment, rdi));
-        myBestestFum(isWin(segment, ldi));
+        drawLine(isWin(segment, hor));
+        drawLine(isWin(segment, ver));
+        drawLine(isWin(segment, rdi));
+        drawLine(isWin(segment, ldi));
 
         //
     }
-
     // 0 - x, 1 - y;
     @Contract(value = "_ -> new", pure = true)
     private int @NotNull [] toMat(int id){
@@ -187,12 +189,13 @@ public class GameController {
         }
         return null;
     }
-    private void myBestestFum(Segment[] segs){
+    private void drawLine(Segment[] segs){
 //        double sx = start.getGroup().getChildren().get(0).getScaleX();
 //        double sy = start.getGroup().getScaleY();
 //        double ex = end.getGroup().getScaleX();
 //        double ey = end.getGroup().getScaleY();
         if(segs == null) return;
+        if(!arrLineToDraw.contains(segs)) arrLineToDraw.add(segs);
         Segment start = segs[0], end = segs[1];
         double h = (floreHeight - lineStoke*(col -1))  / col;
         double w = (floreWeight - lineStoke*(row -1))    / row;
