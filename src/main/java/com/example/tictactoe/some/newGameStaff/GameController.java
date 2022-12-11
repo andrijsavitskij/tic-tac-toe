@@ -1,5 +1,6 @@
 package com.example.tictactoe.some.newGameStaff;
 
+import com.example.tictactoe.Settings;
 import com.example.tictactoe.some.figurs.Figura;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -16,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+
+import static com.example.tictactoe.Settings.TEST_MOD;
 
 public class GameController {
 
@@ -85,7 +89,8 @@ public class GameController {
         pane.getChildren().add(flore);
         flore.setVgap(lineStoke);
         flore.setHgap(lineStoke);
-        /* DEBUG // TODO: remove */ flore.setStyle("-fx-background-color: RED;");
+        flore.setStyle(Settings.Color.game_fieldSepLine_BG);
+        if(TEST_MOD) flore.setStyle("-fx-background-color: RED;");
     }
     private void newMove(Segment segment){
         if(!segment.isNoEmpty()){
@@ -112,12 +117,13 @@ public class GameController {
                  newMove(i);
             });
 
-        // DEBUG // todo delete
-        for (var i : segments) {
-            var v = new Label();
-            v.setText(String.valueOf(segments.indexOf(i)));
-            v.setFont(Font.font(10));
-            i.getGroup().getChildren().add(v);
+        /* DEBUG */ if(TEST_MOD) {
+            for (var i : segments) {
+                var v = new Label();
+                v.setText(String.valueOf(segments.indexOf(i)));
+                v.setFont(Font.font(10));
+                i.getGroup().getChildren().add(v);
+            }
         }
     }
     private void win(Segment segment) {
@@ -191,10 +197,6 @@ public class GameController {
         return null;
     }
     private void drawLine(Segment[] segs){
-//        double sx = start.getGroup().getChildren().get(0).getScaleX();
-//        double sy = start.getGroup().getScaleY();
-//        double ex = end.getGroup().getScaleX();
-//        double ey = end.getGroup().getScaleY();
         if(segs == null) return;
         if(!arrLineToDraw.contains(segs)) arrLineToDraw.add(segs);
         Segment start = segs[0], end = segs[1];
@@ -204,16 +206,15 @@ public class GameController {
         double sy = start.getGroup().getLayoutY()+(h/2);
         double ex = end.getGroup().getLayoutX()+(w/2);
         double ey = end.getGroup().getLayoutY()+(h/2);
-        //Line line = new Line(start.getGroup().getLayoutX(),start.getGroup().getLayoutY(),start.getGroup().getLayoutX(),start.getGroup().getLayoutY());
         Line line = new Line(sx,sy,ex,ey);
         line.setStrokeWidth(lineStoke*2);
-        line.setStroke(Color.DARKBLUE);
+        line.setStroke(Paint.valueOf(Settings.Color.game_winLine_C));
         line.toFront();
         pane.getChildren().add(line);
     }
     private void ifWin() {
         //WIN
-        if (arrLineToDraw.size() >= 1) { // for future
+        if (arrLineToDraw.size() >= Settings.lineToWin) { // for future
             flore.setOnMouseClicked(event -> {
                 flore.setOnMouseClicked(event1 -> {});
                 newGame();
@@ -235,6 +236,7 @@ public class GameController {
 
     // FIXME--low--: 06.12.2022 баг, при ресайзі не вся площина панелі займається гадаю ( не завжди )
     // FIXME--low--: 06.12.2022 баг, при створенні і при ресайзі нижній рядок вилазить за рамки розміру ( не завжди )
+    // FIXME--med--; 11.12.2022 негарно, виграшна лінія малюеться не гарно
 }
 
 

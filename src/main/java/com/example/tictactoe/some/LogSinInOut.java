@@ -1,6 +1,7 @@
 package com.example.tictactoe.some;
 
 import com.example.tictactoe.HelloApplication;
+import com.example.tictactoe.Settings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 

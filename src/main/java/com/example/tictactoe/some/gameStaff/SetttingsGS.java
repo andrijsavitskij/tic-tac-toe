@@ -4,7 +4,7 @@ import com.example.tictactoe.some.Player;
 
 import java.util.ArrayList;
 
-public class Settings {
+public class SetttingsGS {
     // type
     //boolean online;
     static public ArrayList<Player> players;

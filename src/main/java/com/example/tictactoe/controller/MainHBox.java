@@ -1,6 +1,7 @@
 package com.example.tictactoe.controller;
 
 import com.example.tictactoe.HelloApplication;
+import com.example.tictactoe.Settings;
 import com.example.tictactoe.some.LogSinInOut;
 import com.example.tictactoe.some.gameStaff.Game;
 import com.example.tictactoe.some.newGameStaff.GameController;
@@ -14,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+
+import static com.example.tictactoe.Settings.TEST_MOD;
 
 public class MainHBox {
 
@@ -35,17 +38,16 @@ public class MainHBox {
     @FXML
     public void initialize() {
         Platform.runLater(this::resize);
-        Platform.runLater(()-> {
-            game = new GameController(GameField,4,4,3); // FIXME: 02.12.2022 только квадратные матрицы((
+        Platform.runLater(() -> {
+            game = new GameController(GameField, 4, 4, 3); // FIXME: 02.12.2022 только квадратные матрицы((
             game.newGame();
             //game = new Game(GameField);
             //game.newGame();
         });
-
         //LogSinInOut.setPane(RVBox);
         //LogSinInOut.start();
 
-        Platform.runLater(()-> {
+        Platform.runLater(() -> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 resize();
                 game.resize();
@@ -56,8 +58,7 @@ public class MainHBox {
                 game.resize();
             });
         });
-
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             Button b = new Button();
             b.setText("new game");
             LVBox.getChildren().add(b);
@@ -67,14 +68,23 @@ public class MainHBox {
         });
 
 
-        ///* //---------DEBUG // TODO: remove
-        GameField.setStyle("-fx-background-color: GREEN;");
-        GameField.getParent().setStyle("-fx-background-color: RED;");
-        RVBox.setStyle("-fx-background-color: GREY;");
-        LVBox.setStyle("-fx-background-color: GREY;");
-        UpFieldHBox.setStyle("-fx-background-color: YELLOW;");
-        DownFieldHBox.setStyle("-fx-background-color: YELLOW;");
-        //*/
+        GameField.setStyle(Settings.Color.backGroundMain);
+        GameField.getParent().setStyle(Settings.Color.backGroundSecond);
+        RVBox.setStyle(Settings.Color.backGroundMain);
+        LVBox.setStyle(Settings.Color.backGroundMain);
+        UpFieldHBox.setStyle(Settings.Color.backGroundMain);
+        DownFieldHBox.setStyle(Settings.Color.backGroundMain);
+
+
+        /* DEBUG */
+        if (TEST_MOD) {
+            GameField.setStyle("-fx-background-color: GREEN;");
+            GameField.getParent().setStyle("-fx-background-color: RED;");
+            RVBox.setStyle("-fx-background-color: GREY;");
+            LVBox.setStyle("-fx-background-color: GREY;");
+            UpFieldHBox.setStyle("-fx-background-color: YELLOW;");
+            DownFieldHBox.setStyle("-fx-background-color: YELLOW;");
+        }
 
     }
 

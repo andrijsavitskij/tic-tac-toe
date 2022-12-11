@@ -2,12 +2,11 @@ package com.example.tictactoe.controller;
 
 import com.example.tictactoe.some.LogSinInOut;
 import com.example.tictactoe.some.Player;
-import com.example.tictactoe.some.Settings;
+import com.example.tictactoe.Settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class LogIn {

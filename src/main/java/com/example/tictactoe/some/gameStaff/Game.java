@@ -1,5 +1,6 @@
 package com.example.tictactoe.some.gameStaff;
 
+import com.example.tictactoe.Settings;
 import com.example.tictactoe.some.figurs.Krestik;
 import com.example.tictactoe.some.figurs.Nolik;
 import javafx.application.Platform;
@@ -76,7 +77,7 @@ public class Game {
             else {
                 return;
             }
-            com.example.tictactoe.some.Settings.playerPlusWin();
+            Settings.playerPlusWin();
         }
     }
 
