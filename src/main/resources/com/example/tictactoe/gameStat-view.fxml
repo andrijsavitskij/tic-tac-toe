@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.GameStat">
+   <children>
+      <VBox fx:id="TLVBox" prefHeight="100.0" prefWidth="50.0">
+         <children>
+            <Pane fx:id="LPane" />
+            <TextFlow fx:id="LText" />
+         </children>
+      </VBox>
+      <VBox fx:id="MLVBox" layoutX="10.0" layoutY="10.0">
+         <children>
+            <TextFlow fx:id="MLTText" />
+            <TextFlow fx:id="MLBText" />
+         </children>
+      </VBox>
+      <VBox fx:id="MRVBox" layoutX="110.0" layoutY="10.0">
+         <children>
+            <TextFlow fx:id="MRTText" />
+            <TextFlow fx:id="MRBText" />
+         </children>
+      </VBox>
+      <VBox fx:id="TRVBox" layoutX="210.0" layoutY="10.0" prefHeight="100.0" prefWidth="50.0">
+         <children>
+            <Pane fx:id="RPane" />
+            <TextFlow fx:id="RText" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

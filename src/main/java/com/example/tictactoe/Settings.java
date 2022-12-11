@@ -4,6 +4,8 @@ import com.example.tictactoe.some.Player;
 
 public class Settings {
     static public int lineToWin = 1;
+    static public int gameColumn = 3;
+    static public int gameRows = 3;
     static public Player player = null;
 
     static final public boolean TEST_MOD = false;

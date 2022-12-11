@@ -8,6 +8,7 @@ import com.example.tictactoe.some.newGameStaff.GameController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -39,20 +40,22 @@ public class MainHBox {
     public void initialize() {
         Platform.runLater(this::resize);
         Platform.runLater(() -> {
-            game = new GameController(GameField, 4, 4, 3); // FIXME: 02.12.2022 только квадратные матрицы((
+            game = new GameController(GameField, Settings.gameColumn, Settings.gameRows, 3); // FIXME: 02.12.2022 только квадратные матрицы((
             game.newGame();
-            //game = new Game(GameField);
-            //game.newGame();
         });
-        //LogSinInOut.setPane(RVBox);
-        //LogSinInOut.start();
+        LogSinInOut.setPane(RVBox);
+        LogSinInOut.start();
+        try {
+            DownFieldHBox.getChildren().add(new FXMLLoader(HelloApplication.class.getResource("gameStat-view.fxml")).load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         Platform.runLater(() -> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
                 resize();
                 game.resize();
             });
-
             mainHBox.heightProperty().addListener((obs, oldVal, newVal) -> {
                 resize();
                 game.resize();
@@ -66,7 +69,6 @@ public class MainHBox {
                 game.newGame();
             });
         });
-
 
         GameField.setStyle(Settings.Color.backGroundMain);
         GameField.getParent().setStyle(Settings.Color.backGroundSecond);
@@ -99,6 +101,7 @@ public class MainHBox {
         DownFieldHBox.setPrefHeight(hh/2);
         GameField.setPrefWidth(hw-CORR);
         GameField.setPrefHeight(hh - CORR);
+        // calculate the number of columns and rows based on the number of colors and a golden ratio for layout.
     }
 
 }
