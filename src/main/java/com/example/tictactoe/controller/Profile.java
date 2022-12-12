@@ -2,10 +2,14 @@ package com.example.tictactoe.controller;
 
 import com.example.tictactoe.some.LogSinInOut;
 import com.example.tictactoe.Settings;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Profile {
     @FXML
@@ -17,11 +21,19 @@ public class Profile {
     @FXML
     private Label TLogin;
 
+    private Timer upWinCount;
+
     @FXML
     public void initialize(){
         TLogin.setText(Settings.player.name());
         updateWinCount();
-        APMain.setOnMouseMoved(event -> updateWinCount());
+        upWinCount = new Timer();
+        upWinCount.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(()->updateWinCount());
+            }
+        }, 0, 300);
     }
 
     public void updateWinCount(){
@@ -31,6 +43,7 @@ public class Profile {
     @FXML
     private void OnBLogout(){
         Settings.player = null;
+        upWinCount.cancel();
         LogSinInOut.setNewStatus(LogSinInOut.Status.logIn);
     }
 

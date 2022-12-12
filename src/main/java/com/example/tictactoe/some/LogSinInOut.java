@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LogSinInOut {
     private static Status status = Status.not_working;
@@ -74,7 +75,7 @@ public class LogSinInOut {
         LogSinInOut.pane = pane;
     }
     public static void start(){
-        if(Settings.player == null){
+        if(Objects.equals(Settings.player.name(), "Player")){
             create_logIn();
         }
         else{
@@ -82,11 +83,13 @@ public class LogSinInOut {
         }
     }
     private static void clear(){
-        pane.getChildren().clear();
+        pane.getChildren().clear();// not safe
         status = Status.work_but_no_module;
     }
     private static void stop(){
-        pane.getParent().getChildrenUnmodifiable().remove(pane);
+        //pane.getParent().getChildrenUnmodifiable().remove(pane);
+        pane.getChildren().clear();// not safe
+        pane = new Pane();
         status = Status.not_working;
     }
 

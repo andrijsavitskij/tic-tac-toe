@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
 import static com.example.tictactoe.Settings.TEST_MOD;
+import static com.example.tictactoe.Settings.playerPlusWin;
 
 public class GameController {
 
@@ -219,6 +220,12 @@ public class GameController {
                 flore.setOnMouseClicked(event1 -> {});
                 newGame();
             });
+            for (var i : segments)
+                i.getGroup().setOnMouseClicked(event -> {
+                    flore.setOnMouseClicked(event1 -> {});
+                    newGame();
+                });
+            playerPlusWin();
         }
         //DRAW
         else if(segments.stream().allMatch(Segment::isNoEmpty)){
@@ -226,6 +233,11 @@ public class GameController {
                 flore.setOnMouseClicked(event1 -> {});
                 newGame();
             });
+            for (var i : segments)
+                i.getGroup().setOnMouseClicked(event -> {
+                    flore.setOnMouseClicked(event1 -> {});
+                    newGame();
+                });
         }
     }
     @Deprecated // недороблена (чи потрібна?)

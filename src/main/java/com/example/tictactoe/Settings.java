@@ -6,12 +6,12 @@ public class Settings {
     static public int lineToWin = 1;
     static public int gameColumn = 3;
     static public int gameRows = 3;
-    static public Player player = null;
+    static public Player player = new Player("Player",0,0);
 
     static final public boolean TEST_MOD = false;
 
     static public void playerPlusWin(){
-        if(player!=null)player = new Player(player.name(), player.winCount() +1, player.id());
+        player = new Player(player.name(), player.winCount() +1, player.id());
     }
     @Deprecated
     static public String Password = "1111";
