@@ -2,6 +2,8 @@ package com.example.tictactoe;
 
 import com.example.tictactoe.some.LogSinInOut;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -10,6 +12,7 @@ public class GameStat {
     public enum Status{ not_working, work_but_no_module, working}
     private static Status status = Status.not_working;
     private static Pane pane = new Pane();
+    private static Node n;
 
     public static void setNewStatus(Status status1){
         switch (status1){
@@ -42,7 +45,8 @@ public class GameStat {
 
     private static void create() throws IOException {
         clear();
-        pane.getChildren().add(new FXMLLoader(HelloApplication.class.getResource("profile-view.fxml")).load());
+        n = new FXMLLoader(HelloApplication.class.getResource("gameStat-view.fxml")).load();
+        pane.getChildren().add(n);
         status = Status.working;
     }
 }

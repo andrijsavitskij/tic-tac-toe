@@ -1,5 +1,6 @@
 package com.example.tictactoe.controller;
 
+import com.example.tictactoe.GameStat;
 import com.example.tictactoe.HelloApplication;
 import com.example.tictactoe.Settings;
 import com.example.tictactoe.some.LogSinInOut;
@@ -43,10 +44,13 @@ public class MainHBox {
             game = new GameController(GameField, Settings.gameColumn, Settings.gameRows, 3); // FIXME: 02.12.2022 только квадратные матрицы((
             game.newGame();
         });
-        LogSinInOut.setPane(RVBox);
-        LogSinInOut.start();
+        //LogSinInOut.setPane(RVBox);
+        //LogSinInOut.start();
+
+//        GameStat.setPane(DownFieldHBox);
+//        GameStat.start();
         try {
-            DownFieldHBox.getChildren().add(new FXMLLoader(HelloApplication.class.getResource("gameStat-view.fxml")).load());
+            DownFieldHBox = new FXMLLoader(HelloApplication.class.getResource("gameStat-view.fxml")).load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

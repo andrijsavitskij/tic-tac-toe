@@ -3,9 +3,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.GameStat">
+<HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.GameStat" alignment="CENTER">
    <children>
-      <VBox fx:id="TLVBox" prefHeight="100.0" prefWidth="50.0">
+      <VBox fx:id="TLVBox">
          <children>
             <Pane fx:id="LPane" />
             <TextFlow fx:id="LText" />
@@ -23,7 +23,7 @@
             <TextFlow fx:id="MRBText" />
          </children>
       </VBox>
-      <VBox fx:id="TRVBox" layoutX="210.0" layoutY="10.0" prefHeight="100.0" prefWidth="50.0">
+      <VBox fx:id="TRVBox" layoutX="210.0" layoutY="10.0" >
          <children>
             <Pane fx:id="RPane" />
             <TextFlow fx:id="RText" />
