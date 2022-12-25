@@ -3,7 +3,9 @@
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.TextFlow?>
 <HBox fx:id="mainHBox" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.MainHBox">
    <children>
       <VBox fx:id="LVBox" minHeight="-Infinity" minWidth="-Infinity"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -15,7 +17,8 @@
          <children>
             <HBox fx:id="UpFieldHBox" minHeight="-Infinity"  />
             <Pane fx:id="GameField" layoutX="440.0" layoutY="135.0" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="135.0" />
-            <HBox fx:id="DownFieldHBox" minHeight="-Infinity"  />
+<!--            <HBox fx:id="DownFieldHBox" minHeight="-Infinity" />-->
+            <fx:include source="gameStat-view.fxml" fx:id="DownFieldHBox"/>
          </children>
       </VBox>
       <VBox fx:id="RVBox" alignment="TOP_RIGHT" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

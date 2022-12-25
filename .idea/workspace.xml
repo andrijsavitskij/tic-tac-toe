@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="v.0.3">
+    <list default="true" id="383aaa40-a06f-4630-80f1-f2ef9089f000" name="Changes" comment="v 0.2.9">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/GameStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/GameStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/GameStat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/GameStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/GameStat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tictactoe/controller/MainHBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/gameStat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/gameStat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainHBox-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tictactoe/mainHBox-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -409,10 +412,10 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tic_Tac_Toe$com_example_tictactoe_HelloApplication.ic" NAME="com.example.tictactoe.HelloApplication Coverage Results" MODIFIED="1669915890859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Tic_Tac_Toe$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1669676186532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.tictactoe.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Tic_Tac_Toe$HelloApplication.ic" NAME="HelloApplication Coverage Results" MODIFIED="1669733860462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Tic_Tac_Toe$com_example_tictactoe_HelloApplication.ic" NAME="com.example.tictactoe.HelloApplication Coverage Results" MODIFIED="1669915890859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.tictactoe.controller.*</FILTER>
     </SUITE>
   </component>

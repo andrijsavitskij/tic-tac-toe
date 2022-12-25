@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.GameStat" alignment="CENTER">
+<HBox fx:id="mainHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tictactoe.controller.GameStat">
    <children>
-      <VBox fx:id="TLVBox">
+      <VBox fx:id="LVBox" prefHeight="200.0">
          <children>
-            <Pane fx:id="LPane" />
-            <TextFlow fx:id="LText" />
+            <Pane fx:id="LPane" prefHeight="200.0" prefWidth="250.0" />
+            <Label fx:id="LLabel" text="Label" />
          </children>
       </VBox>
-      <VBox fx:id="MLVBox" layoutX="10.0" layoutY="10.0">
+      <VBox fx:id="RVBox" prefHeight="200.0">
          <children>
-            <TextFlow fx:id="MLTText" />
-            <TextFlow fx:id="MLBText" />
-         </children>
-      </VBox>
-      <VBox fx:id="MRVBox" layoutX="110.0" layoutY="10.0">
-         <children>
-            <TextFlow fx:id="MRTText" />
-            <TextFlow fx:id="MRBText" />
-         </children>
-      </VBox>
-      <VBox fx:id="TRVBox" layoutX="210.0" layoutY="10.0" >
-         <children>
-            <Pane fx:id="RPane" />
-            <TextFlow fx:id="RText" />
+            <Pane fx:id="RPane" prefHeight="200.0" prefWidth="250.0" />
+            <Label fx:id="RLabel" text="Label" />
          </children>
       </VBox>
    </children>

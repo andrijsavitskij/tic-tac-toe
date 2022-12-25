@@ -1,22 +1,14 @@
 package com.example.tictactoe.controller;
 
-import com.example.tictactoe.GameStat;
-import com.example.tictactoe.HelloApplication;
 import com.example.tictactoe.Settings;
 import com.example.tictactoe.some.LogSinInOut;
-import com.example.tictactoe.some.gameStaff.Game;
 import com.example.tictactoe.some.newGameStaff.GameController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 
 import static com.example.tictactoe.Settings.TEST_MOD;
 
@@ -44,16 +36,9 @@ public class MainHBox {
             game = new GameController(GameField, Settings.gameColumn, Settings.gameRows, 3); // FIXME: 02.12.2022 только квадратные матрицы((
             game.newGame();
         });
-        //LogSinInOut.setPane(RVBox);
-        //LogSinInOut.start();
+        LogSinInOut.setPane(RVBox);
+        LogSinInOut.start();
 
-//        GameStat.setPane(DownFieldHBox);
-//        GameStat.start();
-        try {
-            DownFieldHBox = new FXMLLoader(HelloApplication.class.getResource("gameStat-view.fxml")).load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         Platform.runLater(() -> {
             mainHBox.widthProperty().addListener((obs, oldVal, newVal) -> {
