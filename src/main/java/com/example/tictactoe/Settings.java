@@ -8,7 +8,7 @@ public class Settings {
     static public int gameRows = 3;
     static public Player player = new Player("Player",0,0);
 
-    static final public boolean TEST_MOD = true;
+    static final public boolean TEST_MOD = false;
 
     static public void playerPlusWin(){
         player = new Player(player.name(), player.winCount() +1, player.id());

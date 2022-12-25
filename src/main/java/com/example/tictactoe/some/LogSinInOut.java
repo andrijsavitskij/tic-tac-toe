@@ -72,6 +72,7 @@ public class LogSinInOut {
     }
 
     public static void setPane(Pane pane){
+
         LogSinInOut.pane = pane;
     }
     public static void start(){
