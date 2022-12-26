@@ -1,18 +1,24 @@
 package com.example.tictactoe;
 
-import com.example.tictactoe.some.Player;
+import com.example.tictactoe.some.figurs.Figura;
+
+import java.util.ArrayList;
 
 public class Settings {
+    // GLOBAL
     static public int lineToWin = 1;
     static public int gameColumn = 3;
     static public int gameRows = 3;
-    static public Player player = new Player("Player",0,0);
-
     static final public boolean TEST_MOD = false;
 
+    // LOCAL
+    static public Player player = new Player("Player",0,0, Figura.Name.krestik);
     static public void playerPlusWin(){
-        player = new Player(player.name(), player.winCount() +1, player.id());
+        player.winCount++;
     }
+
+
+
     @Deprecated
     static public String Password = "1111";
     @Deprecated

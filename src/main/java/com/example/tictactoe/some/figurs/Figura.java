@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 public interface Figura {
     Group getNew(double X, double Y, double L);
 
-    public enum Name {
-        krestik,nolik
+    enum Name {
+        krestik,nolik,trikytnik,pryamokytnik
     }
     Group get();
 

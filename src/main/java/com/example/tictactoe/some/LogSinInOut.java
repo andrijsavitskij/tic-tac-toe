@@ -76,7 +76,7 @@ public class LogSinInOut {
         LogSinInOut.pane = pane;
     }
     public static void start(){
-        if(Objects.equals(Settings.player.name(), "Player")){
+        if(Objects.equals(Settings.player.name, "Player")){
             create_logIn();
         }
         else{

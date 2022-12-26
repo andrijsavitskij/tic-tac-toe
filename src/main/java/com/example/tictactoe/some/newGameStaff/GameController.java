@@ -1,9 +1,7 @@
 package com.example.tictactoe.some.newGameStaff;
 
 import com.example.tictactoe.Settings;
-import com.example.tictactoe.some.figurs.Figura;
-import com.example.tictactoe.some.figurs.Krestik;
-import com.example.tictactoe.some.figurs.Nolik;
+import com.example.tictactoe.some.figurs.*;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -45,8 +43,8 @@ public class GameController {
         this.winLine = winLine;
 
         players = new ArrayList<>();
-        players.add(new MyPlayerRecord_just_for_fName(Figura.Name.krestik));
-        players.add(new MyPlayerRecord_just_for_fName(Figura.Name.nolik));
+        players.add(new MyPlayerRecord_just_for_fName(Figura.Name.pryamokytnik));
+        players.add(new MyPlayerRecord_just_for_fName(Figura.Name.trikytnik));
 
         newSize();
     }
@@ -277,6 +275,8 @@ class Segment {
         switch (fName){
             case krestik -> figura = new Krestik(cx, cy, size);
             case nolik -> figura = new Nolik(cx, cy, size);
+            case trikytnik -> figura = new Trikytnik(cx, cy, size);
+            case pryamokytnik -> figura = new Pryamokytnik(cx, cy , size);
         }
         group.getChildren().add(figura.get());
     }

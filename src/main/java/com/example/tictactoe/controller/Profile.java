@@ -25,7 +25,7 @@ public class Profile {
 
     @FXML
     public void initialize(){
-        TLogin.setText(Settings.player.name());
+        TLogin.setText(Settings.player.name);
         updateWinCount();
         upWinCount = new Timer();
         upWinCount.schedule(new TimerTask() {
@@ -37,7 +37,7 @@ public class Profile {
     }
 
     public void updateWinCount(){
-        TWin.setText(String.valueOf(Settings.player.winCount()));
+        TWin.setText(String.valueOf(Settings.player.winCount));
     }
 
     @FXML
